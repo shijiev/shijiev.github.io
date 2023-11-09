@@ -5,8 +5,8 @@
     
     <entry>
       <title>生产问题(1)：记一个低级错误导致的生产问题</title>
-      <link href="/2023/11/09/0006-production-problems-/"/>
-      <url>/2023/11/09/0006-production-problems-/</url>
+      <link href="/2023/11/09/0006-production-problems-1/"/>
+      <url>/2023/11/09/0006-production-problems-1/</url>
       
         <content type="html"><![CDATA[<h2 id="问题简述"><a href="#问题简述" class="headerlink" title="问题简述"></a>问题简述</h2><blockquote><p>投产后的第一次业务验证，我们出错了</p></blockquote><p>投产后，像往常一样，几方开始配合客户进行业务验证，但是这次似乎不太顺利。一个客户急急的在沟通群里发出来了一个问题：一笔10w的转账，内部挂账，直接退汇了？同业公司查到的原因是账户户名不符！</p><p>迅速的，我们像炸了锅一样，迅速的查询交易日志，找到报文，比对发现貌似没有问题，那为什么客户在同业公司查出来的是退汇呢？一步步排查，终于发现我们送的账户名称和客户姓名，两个字段混淆了，只有取值相同，交易才能成功。事情的经过很简单，但是这件事瞬时惊动了领导，直接下达指示，务必当时解决。经过两方业务沟通，最后达成一致，暂时取相同的值，后续再行抢修。</p><p>问题就这样解决了，可是问题真的解决了吗？</p><h2 id="问题原因：到底是什么原因导致的？"><a href="#问题原因：到底是什么原因导致的？" class="headerlink" title="问题原因：到底是什么原因导致的？"></a>问题原因：到底是什么原因导致的？</h2><p>我觉得问题远没有解决，各种单子的做做停停，分支管理的混乱，以及麻痹大意，早已形式化的代码走查，我想到了很多很多，这些才是导致这次事故的本质原因。</p><h2 id="解决方案：问题怎么解决？"><a href="#解决方案：问题怎么解决？" class="headerlink" title="解决方案：问题怎么解决？"></a>解决方案：问题怎么解决？</h2><p>一个问题很好解决，可以问题背后的问题，怎么解决呢？我想到了几个方案：</p><ul><li>各种单子的做做停停：这种我们作为架构或者项目负责人或者开发，无法左右。</li><li>分支管理的混乱：这个是可控的，分支管理要重新梳理好，管理好，每个分支的来源及需求单子内容，进度，是否延期等一定要做好记录。</li><li>代码走查：这个非常重要，在我的提议下，以后所有的单子未经代码评审，严禁投产。代码评审至少需要两个技术 <code>leader</code> 进行代码 <code>review</code></li></ul><h2 id="思考：后续如何避免类似问题再次发生？"><a href="#思考：后续如何避免类似问题再次发生？" class="headerlink" title="思考：后续如何避免类似问题再次发生？"></a>思考：后续如何避免类似问题再次发生？</h2><p>这次表面上是技术问题，实际本质上是管理问题，上层必须加强代码管理质量管理，否则只会越来越不好。</p><p>当然，我们的方案执行后，最近的几次投产均未再出现这些低级错误，记录这些东西，只为警钟长鸣，没有下次。</p><p>相信会越来越好，永远相信美好的事情即将发生。</p>]]></content>
       
@@ -21,33 +21,6 @@
         <tags>
             
             <tag> 生产问题 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>每天一个Linux命令(0)：Linux命令基础格式</title>
-      <link href="/2023/11/08/0003-linux-command-0/"/>
-      <url>/2023/11/08/0003-linux-command-0/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>无论是什么命令，用于什么用途，在 <code>linux</code> 中，命令有其通用的格式：</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">command</span> [-options] [parameter]  <span class="comment"># linux 命令基础格式</span></span><br></pre></td></tr></table></figure><ul><li>command：命令本身</li><li>-options：[可选，非必填]命令的一些选项，可以通过选项控制命令的行为细节</li><li>parameter：[可选，非必填]命令的参数，多数用于命令的指向目标等</li></ul><p>语法中的 <code>[]</code> 表示可选的意思</p><p>示例：</p><ul><li><code>ls -l /home/user1</code>，<code>ls</code> 是命令本身，<code>-l</code> 是选项，<code>/home/user1</code> 是参数</li></ul><blockquote><p>意思是 以列表的形式，显示 <code>/home/user1</code> 目录内的内容</p></blockquote><p>后续所有命令的学习，均会以此为基础进行学习，想进行系统化查看的，可点击标题下方的 标签 快速查看本专栏</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 运维知识 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> linux知识 </tag>
-            
-            <tag> 每天一个Linux命令 </tag>
             
         </tags>
       
@@ -83,6 +56,33 @@
     
     
     <entry>
+      <title>每天一个Linux命令(0)：Linux命令基础格式</title>
+      <link href="/2023/11/08/0003-linux-command-0/"/>
+      <url>/2023/11/08/0003-linux-command-0/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>无论是什么命令，用于什么用途，在 <code>linux</code> 中，命令有其通用的格式：</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">command</span> [-options] [parameter]  <span class="comment"># linux 命令基础格式</span></span><br></pre></td></tr></table></figure><ul><li>command：命令本身</li><li>-options：[可选，非必填]命令的一些选项，可以通过选项控制命令的行为细节</li><li>parameter：[可选，非必填]命令的参数，多数用于命令的指向目标等</li></ul><p>语法中的 <code>[]</code> 表示可选的意思</p><p>示例：</p><ul><li><code>ls -l /home/user1</code>，<code>ls</code> 是命令本身，<code>-l</code> 是选项，<code>/home/user1</code> 是参数</li></ul><blockquote><p>意思是 以列表的形式，显示 <code>/home/user1</code> 目录内的内容</p></blockquote><p>后续所有命令的学习，均会以此为基础进行学习，想进行系统化查看的，可点击标题下方的 标签 快速查看本专栏</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 运维知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 每天一个Linux命令 </tag>
+            
+            <tag> linux知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《如何阅读一本书》读书笔记</title>
       <link href="/2023/11/08/231108-%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%B8%80%E6%9C%AC%E4%B9%A6/"/>
       <url>/2023/11/08/231108-%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%B8%80%E6%9C%AC%E4%B9%A6/</url>
@@ -110,33 +110,6 @@
     
     
     <entry>
-      <title>每天一个Linux命令(1)：ls</title>
-      <link href="/2023/11/08/0004-linux-command-1-ls/"/>
-      <url>/2023/11/08/0004-linux-command-1-ls/</url>
-      
-        <content type="html"><![CDATA[<h2 id="ls-命令入门"><a href="#ls-命令入门" class="headerlink" title="ls 命令入门"></a><code>ls</code> 命令入门</h2><blockquote><p><code>ls</code> 命令的作用是列出目录下的内容，语法细节如下：</p></blockquote><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p><code>ls [-a -l -h] [linux 路径]</code> </p><h2 id="命令选项"><a href="#命令选项" class="headerlink" title="命令选项"></a>命令选项</h2><ul><li><p><code>-a</code> 选项，可以展示出隐藏的内容</p><ul><li>以 <code>.</code> 开头的文件或文件夹默认被隐藏，需要 <code>-a</code> 才能显示</li></ul></li><li><p><code>-l</code> 选项，以列表的形式展示内容，并展示更多细节</p></li><li><p><code>-h</code> 选项，不能单独使用，需要和 <code>-l</code> 选项搭配使用，以更加人性化的方式 显示文件的大小，单位可以是 Kb，Mb，Gb等</p></li></ul><h2 id="命令选项-组合使用"><a href="#命令选项-组合使用" class="headerlink" title="命令选项 组合使用"></a>命令选项 组合使用</h2><ul><li>命令的选项是可以组合使用的，比如 <code>ls -lha</code> 等同于 <code>ls -l -h -a</code></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 运维知识 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 每天一个Linux命令 </tag>
-            
-            <tag> linux命令 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>每天一个Linux命令(2)：ls</title>
       <link href="/2023/11/08/0005-linux-command-2-cd/"/>
       <url>/2023/11/08/0005-linux-command-2-cd/</url>
@@ -153,9 +126,36 @@
       
         <tags>
             
+            <tag> linux命令 </tag>
+            
             <tag> 每天一个Linux命令 </tag>
             
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>每天一个Linux命令(1)：ls</title>
+      <link href="/2023/11/08/0004-linux-command-1-ls/"/>
+      <url>/2023/11/08/0004-linux-command-1-ls/</url>
+      
+        <content type="html"><![CDATA[<h2 id="ls-命令入门"><a href="#ls-命令入门" class="headerlink" title="ls 命令入门"></a><code>ls</code> 命令入门</h2><blockquote><p><code>ls</code> 命令的作用是列出目录下的内容，语法细节如下：</p></blockquote><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p><code>ls [-a -l -h] [linux 路径]</code> </p><h2 id="命令选项"><a href="#命令选项" class="headerlink" title="命令选项"></a>命令选项</h2><ul><li><p><code>-a</code> 选项，可以展示出隐藏的内容</p><ul><li>以 <code>.</code> 开头的文件或文件夹默认被隐藏，需要 <code>-a</code> 才能显示</li></ul></li><li><p><code>-l</code> 选项，以列表的形式展示内容，并展示更多细节</p></li><li><p><code>-h</code> 选项，不能单独使用，需要和 <code>-l</code> 选项搭配使用，以更加人性化的方式 显示文件的大小，单位可以是 Kb，Mb，Gb等</p></li></ul><h2 id="命令选项-组合使用"><a href="#命令选项-组合使用" class="headerlink" title="命令选项 组合使用"></a>命令选项 组合使用</h2><ul><li>命令的选项是可以组合使用的，比如 <code>ls -lha</code> 等同于 <code>ls -l -h -a</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 运维知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> linux命令 </tag>
+            
+            <tag> 每天一个Linux命令 </tag>
             
         </tags>
       
@@ -296,33 +296,6 @@
     
     <entry>
       <title>测试博客模板</title>
-      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(7)/"/>
-      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(7)/</url>
-      
-        <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> web框架 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> 3-Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>测试博客模板</title>
       <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(6)/"/>
       <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(6)/</url>
       
@@ -350,15 +323,15 @@
     
     <entry>
       <title>测试博客模板</title>
-      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(8)/"/>
-      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(8)/</url>
+      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(7)/"/>
+      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(7)/</url>
       
         <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
       
       
       <categories>
           
-          <category> 缓存 </category>
+          <category> web框架 </category>
           
       </categories>
       
@@ -413,6 +386,33 @@
       <categories>
           
           <category> 博客模板 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 3-Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>测试博客模板</title>
+      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(8)/"/>
+      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(8)/</url>
+      
+        <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 缓存 </category>
           
       </categories>
       
