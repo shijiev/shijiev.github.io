@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JDK-11源码阅读(1)：只要三步：搭建JDK11源码阅读环境</title>
+      <link href="/2023/11/14/0007-source-read-jdk-11-001/"/>
+      <url>/2023/11/14/0007-source-read-jdk-11-001/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第一步：新建空白-Java-工程"><a href="#第一步：新建空白-Java-工程" class="headerlink" title="第一步：新建空白 Java 工程"></a>第一步：新建空白 Java 工程</h2><p><img src="/../static/articles/jdk-11/2023-11-14_21-29-58.292_Tuesday.jpg"></p><h2 id="第二步：将-src-zip-解压后放到工程中"><a href="#第二步：将-src-zip-解压后放到工程中" class="headerlink" title="第二步：将 src.zip 解压后放到工程中"></a>第二步：将 src.zip 解压后放到工程中</h2><ul><li><p>在 <strong>第一步</strong> 新建的 Java 工程中，新建一个 src 同级的文件夹 jdk-11-src</p></li><li><p>把 src.zip 解压到 jdk-11-src 目录下</p></li></ul><p><img src="/../static/articles/jdk-11/2023-11-14_22-28-55.820_Tuesday.jpg"></p><h2 id="第三步：配置好-JDK-源码运行环境"><a href="#第三步：配置好-JDK-源码运行环境" class="headerlink" title="第三步：配置好 JDK 源码运行环境"></a>第三步：配置好 JDK 源码运行环境</h2><ul><li>为了避免应为修改源码，影响到其他项目的运行，强烈建议新增一个 SDK ，名字随便起，我这里起名“for-jdk-11-src”</li><li>将Sourcepath修改为当前项目 “jdk-11-src” 目录下的源码内容。</li><li>将项目中的JDK源码关联到Sourcepath</li></ul><p><img src="/../static/articles/jdk-11/2023-11-14_22-39-49.653_Tuesday.jpg"></p><h2 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h2><ul><li>写好测试类，打好断点，右键debug，一直F7 即可开始调试了，哈哈</li></ul><p><img src="/../static/articles/jdk-11/2023-11-14_22-43-58.028_Tuesday.jpg"></p><h2 id="问题解决："><a href="#问题解决：" class="headerlink" title="问题解决："></a>问题解决：</h2><h3 id="问题1：解决系统资源不足-OOM"><a href="#问题1：解决系统资源不足-OOM" class="headerlink" title="问题1：解决系统资源不足(OOM)"></a>问题1：解决系统资源不足(OOM)</h3><ul><li>依次点击File–&gt;Settings–&gt;Build,Execution,Deployment–&gt;Compiler</li><li>堆大小可由原来的700改为1700</li></ul><p><img src="/../static/articles/jdk-11/2023-11-14_22-41-42.147_Tuesday.jpg"></p><h3 id="问题2：Java：找到太多的模块声明的报错"><a href="#问题2：Java：找到太多的模块声明的报错" class="headerlink" title="问题2：Java：找到太多的模块声明的报错"></a>问题2：Java：找到太多的模块声明的报错</h3><ul><li>不要把源码文件放在src路径下，放在和src同一级即可</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 源码阅读 </category>
+          
+          <category> JDK-11 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生产问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>生产问题(1)：记一个低级错误导致的生产问题</title>
       <link href="/2023/11/09/0006-production-problems-1/"/>
       <url>/2023/11/09/0006-production-problems-1/</url>
@@ -72,9 +99,9 @@
       
         <tags>
             
-            <tag> 每天一个Linux命令 </tag>
-            
             <tag> linux知识 </tag>
+            
+            <tag> 每天一个Linux命令 </tag>
             
         </tags>
       
@@ -110,33 +137,6 @@
     
     
     <entry>
-      <title>每天一个Linux命令(2)：ls</title>
-      <link href="/2023/11/08/0005-linux-command-2-cd/"/>
-      <url>/2023/11/08/0005-linux-command-2-cd/</url>
-      
-        <content type="html"><![CDATA[<h2 id="ls-命令入门"><a href="#ls-命令入门" class="headerlink" title="ls 命令入门"></a><code>ls</code> 命令入门</h2><blockquote><p><code>ls</code> 命令的作用是列出目录下的内容，语法细节如下：</p></blockquote><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p><code>ls [-a -l -h] [linux 路径]</code> </p><h2 id="命令选项"><a href="#命令选项" class="headerlink" title="命令选项"></a>命令选项</h2><ul><li><p><code>-a</code> 选项，可以展示出隐藏的内容</p><ul><li>以 <code>.</code> 开头的文件或文件夹默认被隐藏，需要 <code>-a</code> 才能显示</li></ul></li><li><p><code>-l</code> 选项，以列表的形式展示内容，并展示更多细节</p></li><li><p><code>-h</code> 选项，不能单独使用，需要和 <code>-l</code> 选项搭配使用，以更加人性化的方式 显示文件的大小，单位可以是 Kb，Mb，Gb等</p></li></ul><h2 id="命令选项-组合使用"><a href="#命令选项-组合使用" class="headerlink" title="命令选项 组合使用"></a>命令选项 组合使用</h2><ul><li>命令的选项是可以组合使用的，比如 <code>ls -lha</code> 等同于 <code>ls -l -h -a</code></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 运维知识 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> linux命令 </tag>
-            
-            <tag> 每天一个Linux命令 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>每天一个Linux命令(1)：ls</title>
       <link href="/2023/11/08/0004-linux-command-1-ls/"/>
       <url>/2023/11/08/0004-linux-command-1-ls/</url>
@@ -153,9 +153,36 @@
       
         <tags>
             
+            <tag> 每天一个Linux命令 </tag>
+            
             <tag> linux命令 </tag>
             
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>每天一个Linux命令(2)：ls</title>
+      <link href="/2023/11/08/0005-linux-command-2-cd/"/>
+      <url>/2023/11/08/0005-linux-command-2-cd/</url>
+      
+        <content type="html"><![CDATA[<h2 id="ls-命令入门"><a href="#ls-命令入门" class="headerlink" title="ls 命令入门"></a><code>ls</code> 命令入门</h2><blockquote><p><code>ls</code> 命令的作用是列出目录下的内容，语法细节如下：</p></blockquote><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p><code>ls [-a -l -h] [linux 路径]</code> </p><h2 id="命令选项"><a href="#命令选项" class="headerlink" title="命令选项"></a>命令选项</h2><ul><li><p><code>-a</code> 选项，可以展示出隐藏的内容</p><ul><li>以 <code>.</code> 开头的文件或文件夹默认被隐藏，需要 <code>-a</code> 才能显示</li></ul></li><li><p><code>-l</code> 选项，以列表的形式展示内容，并展示更多细节</p></li><li><p><code>-h</code> 选项，不能单独使用，需要和 <code>-l</code> 选项搭配使用，以更加人性化的方式 显示文件的大小，单位可以是 Kb，Mb，Gb等</p></li></ul><h2 id="命令选项-组合使用"><a href="#命令选项-组合使用" class="headerlink" title="命令选项 组合使用"></a>命令选项 组合使用</h2><ul><li>命令的选项是可以组合使用的，比如 <code>ls -lha</code> 等同于 <code>ls -l -h -a</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 运维知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> 每天一个Linux命令 </tag>
+            
+            <tag> linux命令 </tag>
             
         </tags>
       
@@ -242,87 +269,6 @@
     
     <entry>
       <title>测试博客模板</title>
-      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(3)/"/>
-      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(3)/</url>
-      
-        <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> MQ技术 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> 3-Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>测试博客模板</title>
-      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(5)/"/>
-      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(5)/</url>
-      
-        <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 网络编程 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> 3-Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>测试博客模板</title>
-      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(6)/"/>
-      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(6)/</url>
-      
-        <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 并发编程 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> 3-Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>测试博客模板</title>
       <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(7)/"/>
       <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(7)/</url>
       
@@ -350,15 +296,15 @@
     
     <entry>
       <title>测试博客模板</title>
-      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC/"/>
-      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC/</url>
+      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(8)/"/>
+      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(8)/</url>
       
         <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
       
       
       <categories>
           
-          <category> 读书 </category>
+          <category> 缓存 </category>
           
       </categories>
       
@@ -404,15 +350,96 @@
     
     <entry>
       <title>测试博客模板</title>
-      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(8)/"/>
-      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(8)/</url>
+      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(5)/"/>
+      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(5)/</url>
       
         <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
       
       
       <categories>
           
-          <category> 缓存 </category>
+          <category> 网络编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 3-Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>测试博客模板</title>
+      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(3)/"/>
+      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(3)/</url>
+      
+        <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MQ技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 3-Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>测试博客模板</title>
+      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(6)/"/>
+      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC%20(6)/</url>
+      
+        <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 并发编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 3-Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>测试博客模板</title>
+      <link href="/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC/"/>
+      <url>/2023/11/04/shijiev-test%20-%20%E5%89%AF%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<p>摘要测试</p><span id="more"></span><p>基于 Hexo + 3-Hexo 测试部署博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean   <span class="comment"># 清除缓存文件等</span></span><br><span class="line">$ hexo g       <span class="comment"># 生成页面</span></span><br><span class="line">$ hexo s       <span class="comment"># 启动预览</span></span><br><span class="line">$ hexo d   <span class="comment"># 部署发布</span></span><br><span class="line">$ hexo g -d             <span class="comment"># 生成页面并部署</span></span><br><span class="line">$ hexo new <span class="string">&quot;name&quot;</span>       <span class="comment"># 新建文章</span></span><br><span class="line">$ hexo new page <span class="string">&quot;name&quot;</span>  <span class="comment"># 新建页面</span></span><br></pre></td></tr></table></figure><p>More info: <a href="">Test</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 读书 </category>
           
       </categories>
       
